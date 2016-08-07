@@ -18,13 +18,18 @@ public class SystemClassHandler {
 	 * @param className The class name to check
 	 * @return True if the given class name belongs to a system package,
 	 * otherwise false
+	 *
+	 * From com.google, only com.google.android makes sense to be considered system package:
+	 * https://developers.google.com/android/reference/packages
+	 *
+	 * There are API-s like Guava that also start with com.google, which should be treated as user libraries.
 	 */
 	public static boolean isClassInSystemPackage(String className) {
 		return className.startsWith("android.")
 				|| className.startsWith("java.")
 				|| className.startsWith("javax.")
 				|| className.startsWith("sun.")
-				|| className.startsWith("com.google.")
+				|| className.startsWith("com.google.android.")
 				|| className.startsWith("org.omg.")
 				|| className.startsWith("org.w3c.dom.");
 	}
